@@ -1,0 +1,60 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local environments and editor state
+.venv/
+venv/
+.env
+.vscode/
+.idea/
+.DS_Store
+.codex-skill-staging/
+
+# Downloaded datasets and archives
+data/dataset/**
+!data/dataset/README.md
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.xz
+*.7z
+
+# Experiment artifacts
+experiment/results/**
+!experiment/results/README.md
+logs/
+log/
+runs/
+outputs/
+wandb/
+tensorboard/
+tb_logs/
+ckpt/
+checkpoints/
+weights/
+events.out.tfevents*
+
+# Logs, checkpoints, and exported model files
+*.log
+*.out
+*.err
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+*.npy
+*.npz
+*.pkl
+*.joblib
