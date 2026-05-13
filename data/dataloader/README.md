@@ -6,7 +6,7 @@
 
 - `clevr.py`：静态图像 loader，返回 `images`
 - `clevr_cogent.py`：静态图像 loader，返回 `images`
-- `coco.py`：静态图像 loader，返回 `images`
+- `coco.py`：静态图像 loader，返回 `images`，并在存在 `instances_*.json` / `image_info_*.json` 时附带 COCO 标注元信息
 - `imagenet.py`：静态图像 loader，返回 `images`
 - `davis.py`：视频序列 loader，返回 `frames`
 - `youtube_vos.py`：视频序列 loader，返回 `frames`

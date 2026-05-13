@@ -8,6 +8,9 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 
+# Basemodel
+basemodel/
+
 # Local environments and editor state
 .venv/
 venv/
@@ -58,3 +61,12 @@ events.out.tfevents*
 *.npz
 *.pkl
 *.joblib
+
+# LPWM baseline workspace
+baseline/lpwm/.venv/
+baseline/lpwm/runtime/
+baseline/lpwm/lpwm_fetch_*/
+# LPWM training outputs (timestamped directories and checkpoints)
+baseline/lpwm/upstream/[0-9]*
+baseline/lpwm/upstream/checkpoints/
+baseline/lpwm/upstream/notebooks/

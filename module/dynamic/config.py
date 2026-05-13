@@ -1,30 +1,51 @@
-from __future__ import annotations
-
 from dataclasses import dataclass, field
 
-from module.slot_encoder.config import InferencePipelineConfig, TrainPipelineConfig
-
 
 @dataclass
-class TemporalLossConfig:
-    temporal_visual_weight: float = 1.0
-    temporal_velocity_weight: float = 0.1
-    max_temporal_match_distance: float = 0.25
+class GNNMamba3Config:
+    # Architecture
+    projection_dim: int = 512
+    n_interleaved_blocks: int = 3
 
+    # GNN (EGNN)
+    gnn_layers: int = 3
+    gnn_hidden_dim: int = 128
+    gnn_context_dim: int = 128
+    egnn_n_rbf: int = 16
+    gnn_dropout: float = 0.0
 
-@dataclass
-class SlotManagerConfig:
-    max_occlusion: int = 30
-    min_confidence: float = 0.3
-    position_threshold: float = 0.2
-    cost_threshold: float = 2.0
-    velocity_decay: float = 0.95
-    measurement_alpha: float = 0.7
+    # Mamba3
+    mamba_d_state: int = 64
+    mamba_headdim: int = 64
+    mamba_d_conv: int = 4
+    mamba_expand: int = 2
+    mamba_is_mimo: bool = True
+    mamba_mimo_rank: int = 4
+    mamba_chunk_size: int = 16
+    mamba_dropout: float = 0.1
 
+    # Context conditioning (matching LPWM adaln)
+    context_cond: bool = True
+    residual_modulation: bool = True
+    context_gate: bool = True
 
-@dataclass
-class TKDISADynamicConfig:
-    loss: TemporalLossConfig = field(default_factory=TemporalLossConfig)
-    slot_manager: SlotManagerConfig = field(default_factory=SlotManagerConfig)
-    train: TrainPipelineConfig = field(default_factory=TrainPipelineConfig)
-    inference: InferencePipelineConfig = field(default_factory=InferencePipelineConfig)
+    # JEPA
+    ema_decay: float = 0.996
+    lambda_rec_start: float = 1.0
+    lambda_rec_end: float = 0.0
+    anneal_epoch_start: int = 30
+    anneal_epoch_end: int = 80
+    lambda_jepa: float = 1.0
+    lambda_cross_view: float = 1.0
+    beta_kl: float = 0.08
+
+    # Particles
+    n_fg_particles: int = 30
+    max_particles: int = 30
+
+    # From LPWM config
+    n_head: int = 8
+    n_layer: int = 6
+    block_size: int = 20
+    dropout: float = 0.1
+    norm_type: str = "rms"
